@@ -640,8 +640,9 @@ String _compactMoney(double cents) {
   if (value.abs() >= 1000000) {
     return 'R\$ ${(value / 1000000).toStringAsFixed(1)} mi';
   }
-  if (value.abs() >= 1000)
+  if (value.abs() >= 1000) {
     return 'R\$ ${(value / 1000).toStringAsFixed(1)} mil';
+  }
   return 'R\$ ${value.toStringAsFixed(0)}';
 }
 
