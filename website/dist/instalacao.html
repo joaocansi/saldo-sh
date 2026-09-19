@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171b20" />
+    <meta name="description" content="Guia de instalação e configuração do saldo.sh no Android e Windows." />
+    <title>Instalação e configuração — saldo.sh</title>
+    <link rel="icon" href="assets/saldo-sh-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="saldo.sh — início">
+          <img src="assets/saldo-sh-icon.png" alt="" width="42" height="42" />
+          <span>saldo<span>.sh</span></span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span><span class="sr-only">Abrir menu</span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+          <a href="index.html#recursos">Recursos</a>
+          <a href="index.html#plataformas">Plataformas</a>
+          <a href="index.html#privacidade">Privacidade</a>
+          <a class="nav-cta" href="instalacao.html" aria-current="page">Instalação</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="docs-hero">
+        <div class="container docs-hero-grid">
+          <div class="reveal">
+            <p class="eyebrow"><span></span> Guia de configuração</p>
+            <h1>Do zero ao<br /><span>saldo.sh</span></h1>
+            <p>Instale o aplicativo, conecte o Drive se quiser sincronizar e escolha seu provedor de IA. O financeiro funciona mesmo sem concluir as etapas opcionais.</p>
+          </div>
+          <aside class="setup-summary reveal" aria-label="Resumo da configuração">
+            <span>CAMINHO RECOMENDADO</span>
+            <ol>
+              <li>Instale no Android ou Windows</li>
+              <li>Informe como deseja ser chamado</li>
+              <li>Conecte o Google Drive — opcional</li>
+              <li>Configure uma IA — opcional</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <div class="container docs-layout">
+        <aside class="docs-nav" aria-label="Nesta página">
+          <span>NESTE GUIA</span>
+          <a href="#antes">Antes de começar</a>
+          <a href="#android">Android</a>
+          <a href="#windows">Windows</a>
+          <a href="#drive">Google Drive</a>
+          <a href="#ia">Inteligência artificial</a>
+          <a href="#primeiros-passos">Primeiros passos</a>
+          <a href="#duvidas">Dúvidas comuns</a>
+        </aside>
+
+        <article class="docs-content">
+          <section id="antes" class="doc-section reveal">
+            <p class="doc-kicker">01 — Antes de começar</p>
+            <h2>Escolha o nível de configuração.</h2>
+            <p>O saldo.sh foi desenhado em camadas. Você pode começar apenas com o banco local e ativar integrações quando fizer sentido.</p>
+            <div class="choice-grid">
+              <div class="choice-card"><span>A</span><h3>Uso somente local</h3><p>Instale e comece. Não exige Google, internet contínua ou chave de IA.</p></div>
+              <div class="choice-card"><span>B</span><h3>Experiência completa</h3><p>Adicione sincronização pelo Drive e um modelo compatível com OpenAI.</p></div>
+            </div>
+            <div class="notice"><span>!</span><div><b>Guarde suas senhas.</b> A senha de sincronização protege o arquivo remoto e não pode ser recuperada pelo aplicativo.</div></div>
+          </section>
+
+          <section id="android" class="doc-section reveal">
+            <p class="doc-kicker">02 — Android</p>
+            <h2>Instalação no celular.</h2>
+            <p>Para testar um APK distribuído fora da Play Store, permita a instalação pela fonte usada para abrir o arquivo. O nome exato da opção varia conforme o fabricante.</p>
+            <div class="step-grid">
+              <div class="step-card"><span>1</span><h3>Baixe o APK</h3><p>Use o pacote de release fornecido pelo mantenedor do projeto.</p></div>
+              <div class="step-card"><span>2</span><h3>Autorize a instalação</h3><p>Confirme “Instalar apps desconhecidos” apenas para a fonte usada.</p></div>
+              <div class="step-card"><span>3</span><h3>Abra o saldo.sh</h3><p>Informe seu nome local e crie a primeira conta ou cartão.</p></div>
+              <div class="step-card"><span>4</span><h3>Revogue a permissão</h3><p>Depois de instalar, você pode retirar a autorização da fonte.</p></div>
+            </div>
+            <p>Para executar pelo código-fonte:</p>
+            <pre class="code-block"><button class="copy-button" type="button" data-copy>Copiar</button>flutter pub get
+flutter run -d android \
+  --dart-define=GOOGLE_ANDROID_SERVER_CLIENT_ID=SEU_CLIENT_ID_WEB</pre>
+          </section>
+
+          <section id="windows" class="doc-section reveal">
+            <p class="doc-kicker">03 — Windows</p>
+            <h2>Instalação no desktop.</h2>
+            <p>Se você recebeu um pacote pronto, mantenha todos os arquivos extraídos na mesma pasta e execute o aplicativo. Para compilar, prepare o ambiente Flutter para Windows.</p>
+            <div class="choice-grid">
+              <div class="choice-card"><span>EXE</span><h3>Pacote pronto</h3><p>Extraia o arquivo completo e abra o executável do saldo.sh. Não mova apenas o <code>.exe</code>.</p></div>
+              <div class="choice-card"><span>DEV</span><h3>Código-fonte</h3><p>Instale Flutter, Visual Studio com “Desenvolvimento para desktop com C++” e habilite o Modo de Desenvolvedor.</p></div>
+            </div>
+            <pre class="code-block"><button class="copy-button" type="button" data-copy>Copiar</button>flutter config --enable-windows-desktop
+flutter pub get
+flutter run -d windows \
+  --dart-define=GOOGLE_DESKTOP_CLIENT_ID=SEU_CLIENT_ID_DESKTOP</pre>
+            <div class="notice"><span>i</span><div>O Client ID do Windows deve ser de uma credencial OAuth do tipo <b>Aplicativo para computador</b>. Não reutilize o Client ID Web do Android.</div></div>
+          </section>
+
+          <section id="drive" class="doc-section reveal">
+            <p class="doc-kicker">04 — Google Drive</p>
+            <h2>Sincronização opcional e criptografada.</h2>
+            <p>O aplicativo usa somente a pasta privada de dados do próprio app no Drive. O arquivo não aparece entre seus documentos comuns.</p>
+            <figure class="flow-figure" aria-label="Fluxo de sincronização criptografada">
+              <div class="flow-node"><span>▣</span><b>SQLite local</b><small>dados financeiros</small></div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="flow-node"><span>◇</span><b>Criptografia</b><small>antes do upload</small></div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="flow-node"><span>☁</span><b>Google Drive</b><small>appDataFolder</small></div>
+            </figure>
+            <div class="step-grid">
+              <div class="step-card"><span>1</span><h3>Google Cloud</h3><p>Crie um projeto, habilite a Google Drive API e configure a tela de consentimento OAuth.</p></div>
+              <div class="step-card"><span>2</span><h3>Credencial Android</h3><p>Cadastre package e SHA-1. Crie também um Client ID Web no mesmo projeto para usar como server client ID.</p></div>
+              <div class="step-card"><span>3</span><h3>Credencial Windows</h3><p>Crie separadamente um Client ID do tipo Aplicativo para computador.</p></div>
+              <div class="step-card"><span>4</span><h3>Conecte no app</h3><p>Em Configurações → Sincronização, entre com o Google e defina uma senha de no mínimo 12 caracteres.</p></div>
+            </div>
+            <div class="notice"><span>!</span><div>Nunca coloque Client Secret, API key ou senha de sincronização no Git. Use variáveis de build ou arquivos locais ignorados.</div></div>
+          </section>
+
+          <section id="ia" class="doc-section reveal">
+            <p class="doc-kicker">05 — Inteligência artificial</p>
+            <h2>Seu modelo, sua chave.</h2>
+            <p>Abra Configurações → Inteligência Artificial, escolha um perfil ou endpoint compatível com OpenAI, informe o modelo e teste a conexão.</p>
+            <figure class="settings-figure" aria-label="Exemplo da configuração de inteligência artificial no saldo.sh">
+              <div class="settings-menu"><b>saldo.sh</b><span>Geral</span><span class="active">Inteligência Artificial</span><span>Sincronização</span><span>Segurança</span></div>
+              <div class="settings-panel">
+                <h3>Inteligência Artificial</h3>
+                <div class="fake-fields">
+                  <div class="fake-field"><small>Provedor</small><b>OpenAI-compatible</b></div>
+                  <div class="fake-field"><small>Modelo</small><b>seu-modelo</b></div>
+                  <div class="fake-field wide"><small>Endpoint</small><b>https://seu-provedor.example/v1</b></div>
+                  <div class="fake-field wide"><small>API key</small><b>••••••••••••••••••</b></div>
+                </div>
+                <span class="test-status">● Conexão pronta para testar</span>
+              </div>
+            </figure>
+            <ul class="check-list">
+              <li><span>✓</span><div><b>OpenAI e OpenRouter</b><p>Perfis prontos com endpoint configurado automaticamente.</p></div></li>
+              <li><span>✓</span><div><b>Endpoints personalizados</b><p>Use serviços que implementem o formato OpenAI de chat e ferramentas.</p></div></li>
+              <li><span>✓</span><div><b>Confirmação antes de salvar</b><p>A IA prepara lançamentos; você revisa o formulário e decide se confirma.</p></div></li>
+            </ul>
+          </section>
+
+          <section id="primeiros-passos" class="doc-section reveal">
+            <p class="doc-kicker">06 — Primeiros passos</p>
+            <h2>Configure primeiro o que sustenta os cálculos.</h2>
+            <div class="step-grid">
+              <div class="step-card"><span>1</span><h3>Crie suas contas</h3><p>Informe o saldo real de cada conta e carteira.</p></div>
+              <div class="step-card"><span>2</span><h3>Cadastre cartões</h3><p>Adicione limite, fechamento e vencimento.</p></div>
+              <div class="step-card"><span>3</span><h3>Registre recorrências</h3><p>Salário, aluguel e assinaturas deixam as projeções mais úteis.</p></div>
+              <div class="step-card"><span>4</span><h3>Defina orçamentos</h3><p>Escolha categorias e limites que façam sentido para sua rotina.</p></div>
+            </div>
+          </section>
+
+          <section id="duvidas" class="doc-section reveal">
+            <p class="doc-kicker">07 — Dúvidas comuns</p>
+            <h2>Antes de abrir o app.</h2>
+            <div class="faq-list">
+              <details><summary>Preciso configurar o Google Drive?</summary><p>Não. Ele é opcional e serve apenas para sincronizar e restaurar dados entre dispositivos.</p></details>
+              <details><summary>Preciso de uma API key para usar o financeiro?</summary><p>Não. A chave é necessária somente para o Assistente. Contas, transações, cartões, orçamentos e relatórios são locais.</p></details>
+              <details><summary>Onde ficam meus dados?</summary><p>Os dados financeiros ficam no SQLite do aplicativo. Quando a sincronização está ativa, uma cópia criptografada é enviada à pasta privada do app no Drive.</p></details>
+              <details><summary>Troquei de aparelho. Como restauro?</summary><p>Conecte a mesma conta Google e informe a mesma senha de sincronização usada no outro dispositivo.</p></details>
+              <details><summary>Um APK novo leva meus dados de teste?</summary><p>Não. O banco do emulador ou dispositivo não é empacotado no APK. Uma instalação limpa começa sem dados.</p></details>
+            </div>
+            <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Voltar para a apresentação</a>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="index.html"><img src="assets/saldo-sh-icon.png" alt="" width="36" height="36" /><span>saldo<span>.sh</span></span></a>
+        <p>Guia de instalação e configuração.</p>
+        <p>© <span data-year></span> saldo.sh</p>
+      </div>
+    </footer>
+  </body>
+</html>

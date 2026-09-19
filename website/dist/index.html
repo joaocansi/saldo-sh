@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171b20" />
+    <meta
+      name="description"
+      content="saldo.sh é um gerenciador financeiro local-first para Android e Windows, com IA configurável e sincronização opcional pelo Google Drive."
+    />
+    <title>saldo.sh — Seu dinheiro. Suas regras.</title>
+    <link rel="icon" href="assets/saldo-sh-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="saldo.sh — início">
+          <img src="assets/saldo-sh-icon.png" alt="" width="42" height="42" />
+          <span>saldo<span>.sh</span></span>
+        </a>
+
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+          <a href="#recursos">Recursos</a>
+          <a href="#plataformas">Plataformas</a>
+          <a href="#privacidade">Privacidade</a>
+          <a class="nav-cta" href="instalacao.html">Instalação <span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span></span> Finanças pessoais / local-first</p>
+            <h1>Seu dinheiro.<br /><em>Suas regras.</em></h1>
+            <p class="hero-text">
+              Contas, cartões, faturas e planejamento em um só lugar — funcionando no seu
+              dispositivo, sem depender de um servidor para existir.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="instalacao.html">
+                Começar a usar <span aria-hidden="true">→</span>
+              </a>
+              <a class="button button-ghost" href="#recursos">Explorar recursos</a>
+            </div>
+            <ul class="hero-proof" aria-label="Destaques">
+              <li><span>✓</span> Funciona offline</li>
+              <li><span>✓</span> Sem conta obrigatória</li>
+              <li><span>✓</span> Android + Windows</li>
+            </ul>
+          </div>
+
+          <div class="product-stage reveal" aria-label="Prévia da interface do saldo.sh">
+            <div class="window-preview">
+              <div class="window-bar">
+                <span class="window-brand"><img src="assets/saldo-sh-icon.png" alt="" /> saldo.sh</span>
+                <div class="window-controls"><i></i><i></i><i></i></div>
+              </div>
+              <div class="window-body">
+                <aside class="preview-sidebar" aria-hidden="true">
+                  <b>›_</b>
+                  <span class="active"></span><span></span><span></span><span></span><span></span>
+                </aside>
+                <div class="preview-main">
+                  <div class="preview-title">
+                    <div><small>SETEMBRO / 2026</small><strong>Olá, João</strong></div>
+                    <span class="sync-dot">● sincronizado</span>
+                  </div>
+                  <div class="money-cards">
+                    <article><small>Saldo disponível</small><b>R$ 8.902,70</b><span>em contas</span></article>
+                    <article><small>Entradas do mês</small><b>R$ 5.000,00</b><span class="positive">↑ previstas</span></article>
+                    <article><small>Saídas do mês</small><b>R$ 2.146,40</b><span class="negative">↓ R$ 390 futuras</span></article>
+                  </div>
+                  <div class="chart-card">
+                    <div class="chart-heading"><span>Evolução do caixa</span><small>6 meses</small></div>
+                    <svg viewBox="0 0 560 150" role="img" aria-label="Gráfico crescente da evolução do caixa">
+                      <defs>
+                        <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stop-color="#e9b45c" stop-opacity=".35" />
+                          <stop offset="1" stop-color="#e9b45c" stop-opacity="0" />
+                        </linearGradient>
+                      </defs>
+                      <path class="grid-line" d="M0 25H560M0 75H560M0 125H560" />
+                      <path class="area" d="M0 122 C75 119 82 96 150 100 S240 77 300 80 S385 50 445 58 S520 28 560 24 V150 H0Z" />
+                      <path class="line" d="M0 122 C75 119 82 96 150 100 S240 77 300 80 S385 50 445 58 S520 28 560 24" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="phone-preview" aria-hidden="true">
+              <div class="phone-notch"></div>
+              <div class="phone-top"><img src="assets/saldo-sh-icon.png" alt="" /><span>Visão geral</span></div>
+              <small>Saldo disponível</small>
+              <strong>R$ 8.902,70</strong>
+              <div class="phone-chart"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <p>Últimas movimentações</p>
+              <div class="phone-row"><span>◎</span><b>Supermercado<small>Alimentação</small></b><em>− R$ 246,40</em></div>
+              <div class="phone-row"><span>↙</span><b>Salário<small>Receita</small></b><em class="positive">+ R$ 5.000</em></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="signal-strip" aria-label="Principais características">
+        <div class="container signal-grid">
+          <p><b>01</b><span>Local-first</span>Seus dados começam no seu dispositivo.</p>
+          <p><b>02</b><span>BYOK</span>Você escolhe a IA e usa sua própria chave.</p>
+          <p><b>03</b><span>Sync opcional</span>Google Drive criptografado, quando você quiser.</p>
+        </div>
+      </section>
+
+      <section id="recursos" class="section feature-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark"><span></span> Controle completo</p>
+            <h2>O essencial, sem transformar sua vida financeira em produto.</h2>
+            <p>Uma visão clara do presente, dos próximos meses e das decisões que você precisa tomar.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-large reveal">
+              <div class="feature-copy">
+                <span class="feature-index">01 / ORGANIZAÇÃO</span>
+                <h3>Contas, cartões e faturas no mesmo fluxo.</h3>
+                <p>Registre saldos, limites, compras parceladas e pagamentos parciais de fatura indicando de qual conta saiu o dinheiro.</p>
+              </div>
+              <div class="account-visual" aria-label="Exemplo de contas e cartão">
+                <div class="account-line"><i class="bank-icon">▥</i><span>Conta principal<small>Saldo atual</small></span><b>R$ 8.902,70</b></div>
+                <div class="account-line"><i class="card-icon">▭</i><span>Nubank<small>Fatura atual</small></span><b>R$ 1.836,40</b></div>
+                <div class="invoice-progress"><span style="width: 64%"></span></div>
+                <small>R$ 650 pagos de R$ 1.836,40</small>
+              </div>
+            </article>
+
+            <article class="feature-card reveal">
+              <span class="feature-index">02 / FUTURO</span>
+              <h3>Planejamento que atravessa os meses.</h3>
+              <p>Veja parcelas, recorrências e a evolução projetada do caixa sem limitar a previsão a poucos meses.</p>
+              <div class="month-bars" aria-hidden="true">
+                <span style="height: 42%"></span><span style="height: 58%"></span><span style="height: 71%"></span><span style="height: 77%"></span><span style="height: 91%"></span>
+              </div>
+            </article>
+
+            <article class="feature-card feature-dark reveal">
+              <span class="feature-index">03 / PRIVACIDADE</span>
+              <h3>Offline por padrão.</h3>
+              <p>SQLite local, segredos no armazenamento seguro do sistema e nenhuma API própria no caminho.</p>
+              <div class="terminal-line"><span>$</span> dados --onde<br /><b>→ neste dispositivo</b></div>
+            </article>
+
+            <article class="feature-card feature-wide reveal">
+              <div class="feature-copy">
+                <span class="feature-index">04 / ASSISTENTE</span>
+                <h3>Converse com suas finanças, não com dados genéricos.</h3>
+                <p>O assistente consulta informações locais por ferramentas controladas, prepara lançamentos para sua revisão e cria gráficos dentro do app.</p>
+              </div>
+              <div class="chat-visual">
+                <p class="chat-user">Quanto posso gastar se eu guardar R$ 500 por mês?</p>
+                <div class="tool-call"><span>✓</span><div><b>Consultando resumo mensal</b><small>Dados locais atualizados</small></div></div>
+                <p class="chat-ai">Mantendo sua meta, você tem uma margem estimada de <strong>R$ 1.284,60</strong> neste mês.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="plataformas" class="section platforms-section">
+        <div class="container platforms-grid">
+          <div class="platform-copy reveal">
+            <p class="eyebrow"><span></span> Um app, duas telas</p>
+            <h2>Feito para Android.<br />Confortável no Windows.</h2>
+            <p>Use no celular ao longo do dia e abra no computador quando quiser analisar com mais espaço. O Google Drive mantém os dispositivos alinhados sem virar o dono dos seus dados.</p>
+            <div class="platform-pills"><span>Android</span><span>Windows</span><span>Layout responsivo</span></div>
+          </div>
+          <div class="platform-stack reveal" aria-label="saldo.sh no Android e Windows">
+            <div class="platform-card windows-card">
+              <span class="platform-label">WINDOWS</span>
+              <div class="mini-window">
+                <aside><b>›_</b><i></i><i></i><i></i><i></i></aside>
+                <div><h4>Relatórios</h4><p>Entradas × saídas</p><div class="report-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              </div>
+            </div>
+            <div class="platform-card android-card">
+              <span class="platform-label">ANDROID</span>
+              <div class="mini-phone"><b>Nova transação</b><label>Nome<span>Mercado</span></label><label>Valor<span>R$ 246,40</span></label><button>Revisar lançamento</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacidade" class="section privacy-section">
+        <div class="container privacy-grid">
+          <div class="privacy-visual reveal" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <img src="assets/saldo-sh-icon.png" alt="" />
+            <span class="orbit-tag tag-local">SQLite local</span>
+            <span class="orbit-tag tag-key">Chaves protegidas</span>
+            <span class="orbit-tag tag-drive">Drive opcional</span>
+          </div>
+          <div class="privacy-copy reveal">
+            <p class="eyebrow dark"><span></span> Arquitetura local-first</p>
+            <h2>Seu financeiro continua sendo seu.</h2>
+            <ul class="check-list">
+              <li><span>✓</span><div><b>Sem backend obrigatório</b><p>O aplicativo continua útil sem internet, IA ou conta Google.</p></div></li>
+              <li><span>✓</span><div><b>Segredos fora do banco</b><p>API keys e credenciais ficam no armazenamento seguro do sistema.</p></div></li>
+              <li><span>✓</span><div><b>Sincronização criptografada</b><p>O snapshot do Drive é protegido antes de sair do dispositivo.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="brand-section">
+        <div class="container brand-grid">
+          <div class="brand-copy reveal">
+            <p class="eyebrow"><span></span> Identidade saldo.sh</p>
+            <h2>Finanças para quem gosta de entender a própria ferramenta.</h2>
+            <p>Visual inspirado em terminal, sinal monetário e software configurável — sem cara de banco e sem promessas mágicas.</p>
+          </div>
+          <figure class="brand-board reveal">
+            <img src="assets/saldo-sh-brand.png" alt="Painel da identidade visual do saldo.sh, com logo grafite e âmbar" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="container cta-box reveal">
+          <div>
+            <p class="eyebrow"><span></span> Pronto para configurar?</p>
+            <h2>Leve o saldo.sh para a sua rotina.</h2>
+          </div>
+          <a class="button button-primary" href="instalacao.html">Ver guia de instalação <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="index.html"><img src="assets/saldo-sh-icon.png" alt="" width="36" height="36" /><span>saldo<span>.sh</span></span></a>
+        <p>Finanças pessoais local-first.</p>
+        <p>© <span data-year></span> saldo.sh</p>
+      </div>
+    </footer>
+  </body>
+</html>
