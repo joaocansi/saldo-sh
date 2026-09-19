@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:drift/native.dart';
-import 'package:flutter_application_1/core/database/app_database.dart';
-import 'package:flutter_application_1/core/database/device_identity.dart';
-import 'package:flutter_application_1/features/finance/application/finance_controller.dart';
-import 'package:flutter_application_1/features/finance/data/local/drift_finance_repository.dart';
-import 'package:flutter_application_1/features/finance/domain/models.dart';
+import 'package:saldo_sh/src/core/database/app_database.dart';
+import 'package:saldo_sh/src/core/database/device_identity.dart';
+import 'package:saldo_sh/src/features/finance/application/finance_controller.dart';
+import 'package:saldo_sh/src/features/finance/data/local/drift_finance_repository.dart';
+import 'package:saldo_sh/src/features/finance/domain/models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const _demoPrefix = 'demo.ai.';

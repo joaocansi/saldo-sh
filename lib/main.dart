@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import 'app/app_dependencies.dart';
-import 'app/verde_app.dart';
+import 'src/app/app_dependencies.dart';
+import 'src/app/verde_app.dart';
 
-export 'app/verde_app.dart';
+export 'src/app/verde_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

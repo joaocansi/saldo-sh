@@ -1,4 +1,4 @@
-name: flutter_application_1
+name: saldo_sh
 description: "saldo.sh — finanças pessoais local-first."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -66,22 +66,14 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: true
-  ios: true
   image_path: "assets/icon/saldo_sh_icon.png"
   adaptive_icon_background: "#171B20"
   adaptive_icon_foreground: "assets/icon/saldo_sh_icon_foreground.png"
   adaptive_icon_monochrome: "assets/icon/saldo_sh_icon_monochrome.png"
-  remove_alpha_ios: true
-  background_color_ios: "#171B20"
   windows:
     generate: true
     image_path: "assets/icon/saldo_sh_icon.png"
     icon_size: 256
-  web:
-    generate: true
-    image_path: "assets/icon/saldo_sh_icon.png"
-    background_color: "#171B20"
-    theme_color: "#E9B45C"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

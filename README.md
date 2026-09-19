@@ -64,19 +64,34 @@ upload.
 
 ```text
 lib/
-├── app/                  # composição da aplicação, tema e dependências
-├── core/
-│   ├── database/         # Drift, SQLite e identidade do dispositivo
-│   ├── security/         # armazenamento seguro de segredos
-│   └── sync/             # infraestrutura compartilhada de sincronização
-└── features/
-    ├── finance/          # domínio financeiro, casos de uso e interface
-    ├── ai/               # assistente, providers, tools e conversas
-    ├── settings/         # preferências e configurações
-    └── sync/             # OAuth, Drive, criptografia, merge e conflitos
+├── main.dart              # ponto de entrada público do Flutter
+└── src/                   # implementação interna da aplicação
+    ├── app/              # composição da aplicação, tema e dependências
+    ├── core/
+    │   ├── database/     # Drift, SQLite e identidade do dispositivo
+    │   ├── security/     # armazenamento seguro de segredos
+    │   └── sync/         # infraestrutura compartilhada de sincronização
+    └── features/
+        ├── finance/      # domínio financeiro, casos de uso e interface
+        ├── ai/           # assistente, providers, tools e conversas
+        ├── settings/     # preferências e configurações
+        └── sync/         # OAuth, Drive, criptografia, merge e conflitos
 
-website/
+site/
 └── dist/                 # site estático em HTML, CSS e JavaScript
+
+assets/                    # ícones e outros recursos empacotados pelo Flutter
+docs/brand/                # referências e prompts da identidade visual
+test/                      # testes, espelhando a organização de lib/src
+├── app/
+├── core/
+└── features/
+    ├── ai/
+    ├── finance/
+    ├── onboarding/
+    ├── settings/
+    └── sync/
+android/ windows/           # plataformas ativas, mantidas na raiz pelo Flutter
 ```
 
 ## Executar localmente
@@ -97,6 +112,44 @@ Para listar os dispositivos disponíveis:
 ```powershell
 flutter devices
 ```
+
+## Automação
+
+O [Makefile](Makefile) reúne os comandos mais frequentes. Com GNU Make
+instalado, execute `make help` para ver os alvos disponíveis. Os mais usados
+são `make quality`, `make run-windows`, `make build-apk` e `make release`.
+
+Os alvos que executam ou compilam o app usam
+`dart_defines.local.json` por padrão. Para usar outro arquivo, informe
+`DART_DEFINES_FILE`, por exemplo:
+
+```powershell
+make build-apk DART_DEFINES_FILE=path/to/defines.json
+```
+
+`make release` gera os artefatos Android e Windows após validar o projeto. A
+publicação na Play Store requer configurar uma chave de assinatura de produção
+no Android; atualmente o projeto usa a chave de depuração para builds release.
+O APK gerado é `saldo-sh-android-release.apk`.
+
+## CI/CD
+
+O workflow [CI/CD](.github/workflows/ci-cd.yml) executa formatação, análise e
+testes em cada push para `main` e pull request. Quando esses passos passam, ele
+gera um APK Android e um pacote `.zip` para Windows, que contém o executável e
+as dependências necessárias.
+
+Para publicar uma GitHub Release com os dois arquivos, crie e envie uma tag
+iniciada por `v`, por exemplo:
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+O APK continua sendo assinado com a chave de depuração até que uma assinatura
+de produção Android seja configurada. Isso é suficiente para distribuição de
+teste, mas não para publicação na Play Store.
 
 ## Configurar a inteligência artificial
 
