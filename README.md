@@ -151,6 +151,13 @@ O APK continua sendo assinado com a chave de depuração até que uma assinatura
 de produção Android seja configurada. Isso é suficiente para distribuição de
 teste, mas não para publicação na Play Store.
 
+## Site público
+
+O site estático em `site/dist` é publicado pelo workflow de GitHub Pages em
+`https://joaocansi.github.io/saldo-sh/` sempre que houver uma alteração em
+`site/` na branch `main`. Para ativá-lo uma única vez, acesse **Settings →
+Pages** no GitHub e escolha **GitHub Actions** como fonte de publicação.
+
 ## Configurar a inteligência artificial
 
 Abra **Configurações → Inteligência Artificial** e informe:
