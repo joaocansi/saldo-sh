@@ -35,10 +35,7 @@ void main() {
   test('invalid or future chart schemas are ignored safely', () {
     expect(AIChartSnapshot.tryFromJson(null), isNull);
     expect(
-      AIChartSnapshot.tryFromJson({
-        'schema_version': 2,
-        'kind': 'cash_flow',
-      }),
+      AIChartSnapshot.tryFromJson({'schema_version': 2, 'kind': 'cash_flow'}),
       isNull,
     );
     expect(
@@ -94,9 +91,6 @@ void main() {
 
     expect(snapshots.map((snapshot) => snapshot.kind), AIChartKind.values);
     expect(snapshots.every((snapshot) => snapshot.hasData), isTrue);
-    expect(
-      () => builder.build('balance', const {}),
-      throwsArgumentError,
-    );
+    expect(() => builder.build('balance', const {}), throwsArgumentError);
   });
 }

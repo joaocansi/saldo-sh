@@ -112,11 +112,7 @@ class SaldoMark extends StatelessWidget {
 
 /// Text signature used beside or below [SaldoMark].
 class SaldoWordmark extends StatelessWidget {
-  const SaldoWordmark({
-    super.key,
-    this.fontSize = 20,
-    this.color,
-  });
+  const SaldoWordmark({super.key, this.fontSize = 20, this.color});
 
   final double fontSize;
   final Color? color;

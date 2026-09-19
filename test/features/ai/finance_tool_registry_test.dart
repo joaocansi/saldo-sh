@@ -307,118 +307,121 @@ void main() {
     },
   );
 
-  test('visualization snapshots are local, filtered and exclude money moves', () async {
-    final repository = _MemoryRepository()
-      ..accounts = [
-        FinanceAccount(
-          id: 'checking',
-          name: 'Conta corrente',
-          kind: 'account',
-          openingBalance: 1000,
-        ),
-        FinanceAccount(
-          id: 'savings',
-          name: 'Reserva',
-          kind: 'account',
-          openingBalance: 500,
-        ),
-      ]
-      ..transactions = [
-        FinanceTransaction(
-          id: 'salary',
-          name: 'Salário',
-          category: 'Salário',
-          amount: 5000,
-          date: DateTime(2026, 9, 1),
-          dueDate: DateTime(2026, 9, 1),
-          type: 'income',
-          accountId: 'checking',
-        ),
-        FinanceTransaction(
-          id: 'rent',
-          name: 'Aluguel',
-          category: 'Moradia',
-          amount: 2000,
-          date: DateTime(2026, 9, 2),
-          dueDate: DateTime(2026, 9, 10),
-          type: 'expense',
-          accountId: 'checking',
-          status: 'planned',
-        ),
-        FinanceTransaction(
-          id: 'transfer',
-          name: 'Guardar',
-          category: 'Outros',
-          amount: 500,
-          date: DateTime(2026, 9, 3),
-          dueDate: DateTime(2026, 9, 3),
-          type: 'transfer',
-          accountId: 'checking',
-          targetAccountId: 'savings',
-        ),
-        FinanceTransaction(
-          id: 'payment',
-          name: 'Pagamento de fatura',
-          category: 'Outros',
-          amount: 300,
-          date: DateTime(2026, 9, 4),
-          dueDate: DateTime(2026, 9, 4),
-          type: 'cardPayment',
-          accountId: 'checking',
-          targetAccountId: 'card',
-        ),
-      ];
-    final controller = FinanceController(repository);
-    await controller.initialize();
-    final tools = FinanceToolRegistry(
-      controller,
-      clock: () => DateTime(2026, 9, 12),
-    );
+  test(
+    'visualization snapshots are local, filtered and exclude money moves',
+    () async {
+      final repository = _MemoryRepository()
+        ..accounts = [
+          FinanceAccount(
+            id: 'checking',
+            name: 'Conta corrente',
+            kind: 'account',
+            openingBalance: 1000,
+          ),
+          FinanceAccount(
+            id: 'savings',
+            name: 'Reserva',
+            kind: 'account',
+            openingBalance: 500,
+          ),
+        ]
+        ..transactions = [
+          FinanceTransaction(
+            id: 'salary',
+            name: 'Salário',
+            category: 'Salário',
+            amount: 5000,
+            date: DateTime(2026, 9, 1),
+            dueDate: DateTime(2026, 9, 1),
+            type: 'income',
+            accountId: 'checking',
+          ),
+          FinanceTransaction(
+            id: 'rent',
+            name: 'Aluguel',
+            category: 'Moradia',
+            amount: 2000,
+            date: DateTime(2026, 9, 2),
+            dueDate: DateTime(2026, 9, 10),
+            type: 'expense',
+            accountId: 'checking',
+            status: 'planned',
+          ),
+          FinanceTransaction(
+            id: 'transfer',
+            name: 'Guardar',
+            category: 'Outros',
+            amount: 500,
+            date: DateTime(2026, 9, 3),
+            dueDate: DateTime(2026, 9, 3),
+            type: 'transfer',
+            accountId: 'checking',
+            targetAccountId: 'savings',
+          ),
+          FinanceTransaction(
+            id: 'payment',
+            name: 'Pagamento de fatura',
+            category: 'Outros',
+            amount: 300,
+            date: DateTime(2026, 9, 4),
+            dueDate: DateTime(2026, 9, 4),
+            type: 'cardPayment',
+            accountId: 'checking',
+            targetAccountId: 'card',
+          ),
+        ];
+      final controller = FinanceController(repository);
+      await controller.initialize();
+      final tools = FinanceToolRegistry(
+        controller,
+        clock: () => DateTime(2026, 9, 12),
+      );
 
-    final withoutChart = await tools.execute('query_finances', {
-      'operation': 'compare_months',
-      'month': '2026-09',
-      'visualize': false,
-    });
-    expect(withoutChart.chart, isNull);
+      final withoutChart = await tools.execute('query_finances', {
+        'operation': 'compare_months',
+        'month': '2026-09',
+        'visualize': false,
+      });
+      expect(withoutChart.chart, isNull);
 
-    final comparison = await tools.execute('query_finances', {
-      'operation': 'compare_months',
-      'month': '2026-09',
-      'months': 2,
-      'account_ref': 'Conta corrente',
-      'visualize': true,
-    });
-    expect(comparison.chart?.kind.name, 'incomeExpense');
-    expect(comparison.chart?.accountName, 'Conta corrente');
-    expect(comparison.chart?.series[0].points[0].valueCents, 500000);
-    expect(comparison.chart?.series[1].points[0].valueCents, 200000);
-
-    final cashFlow = await tools.execute('query_finances', {
-      'operation': 'cash_flow',
-      'month': '2026-09',
-      'months': 2,
-      'account_ref': 'Conta corrente',
-      'visualize': true,
-    });
-    expect(cashFlow.chart?.kind.name, 'cashFlow');
-    expect(cashFlow.chart?.series.single.points[0].valueCents, 400000);
-    expect(cashFlow.chart?.series.single.points[1].valueCents, 400000);
-
-    await expectLater(
-      tools.execute('query_finances', {
-        'operation': 'balance',
+      final comparison = await tools.execute('query_finances', {
+        'operation': 'compare_months',
+        'month': '2026-09',
+        'months': 2,
+        'account_ref': 'Conta corrente',
         'visualize': true,
-      }),
-      throwsA(
-        isA<ToolInputException>().having(
-          (error) => error.code,
-          'code',
-          'unsupported_visualization',
+      });
+      expect(comparison.chart?.kind.name, 'incomeExpense');
+      expect(comparison.chart?.accountName, 'Conta corrente');
+      expect(comparison.chart?.series[0].points[0].valueCents, 500000);
+      expect(comparison.chart?.series[1].points[0].valueCents, 200000);
+
+      final cashFlow = await tools.execute('query_finances', {
+        'operation': 'cash_flow',
+        'month': '2026-09',
+        'months': 2,
+        'account_ref': 'Conta corrente',
+        'visualize': true,
+      });
+      expect(cashFlow.chart?.kind.name, 'cashFlow');
+      expect(cashFlow.chart?.series.single.points[0].valueCents, 400000);
+      expect(cashFlow.chart?.series.single.points[1].valueCents, 400000);
+
+      await expectLater(
+        tools.execute('query_finances', {
+          'operation': 'balance',
+          'visualize': true,
+        }),
+        throwsA(
+          isA<ToolInputException>().having(
+            (error) => error.code,
+            'code',
+            'unsupported_visualization',
+          ),
         ),
-      ),
-    );
-  });
+      );
+    },
+  );
 
   test('category charts keep seven categories and group the rest', () async {
     final repository = _MemoryRepository()

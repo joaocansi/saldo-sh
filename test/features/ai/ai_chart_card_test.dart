@@ -49,9 +49,7 @@ void main() {
           Brightness.light,
           platform: TargetPlatform.windows,
         ),
-        home: Scaffold(
-          body: AIChartCard(snapshot: _snapshots().first),
-        ),
+        home: Scaffold(body: AIChartCard(snapshot: _snapshots().first)),
       ),
     );
     expect(find.byType(BarChart), findsOneWidget);

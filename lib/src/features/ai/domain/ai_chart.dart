@@ -9,9 +9,8 @@ enum AIChartKind {
 
   final String wireName;
 
-  static AIChartKind? fromWireName(Object? value) => values
-      .where((kind) => kind.wireName == value)
-      .firstOrNull;
+  static AIChartKind? fromWireName(Object? value) =>
+      values.where((kind) => kind.wireName == value).firstOrNull;
 }
 
 class AIChartPoint {
@@ -20,10 +19,7 @@ class AIChartPoint {
   final String label;
   final int valueCents;
 
-  Map<String, dynamic> toJson() => {
-    'label': label,
-    'value_cents': valueCents,
-  };
+  Map<String, dynamic> toJson() => {'label': label, 'value_cents': valueCents};
 
   static AIChartPoint? tryFromJson(Object? source) {
     if (source is! Map) return null;

@@ -57,7 +57,10 @@ class FinanceChartSnapshotBuilder {
         final value = entry.value;
         if (value is num) {
           points.add(
-            AIChartPoint(label: entry.key.toString(), valueCents: value.toInt()),
+            AIChartPoint(
+              label: entry.key.toString(),
+              valueCents: value.toInt(),
+            ),
           );
         }
       }
@@ -68,7 +71,9 @@ class FinanceChartSnapshotBuilder {
       title: 'Gastos por categoria',
       subtitle: _subtitle(payload, 'Distribuição das despesas registradas'),
       periodLabels: [month],
-      series: [AIChartSeries(label: 'Despesas', role: 'category', points: points)],
+      series: [
+        AIChartSeries(label: 'Despesas', role: 'category', points: points),
+      ],
       accountName: _accountName(payload),
     );
   }
@@ -82,7 +87,13 @@ class FinanceChartSnapshotBuilder {
       periodLabels: [payload['month']?.toString() ?? ''],
       series: [
         _series('Gasto', 'spent', budgets, 'spent_cents', labelKey: 'category'),
-        _series('Limite', 'limit', budgets, 'limit_cents', labelKey: 'category'),
+        _series(
+          'Limite',
+          'limit',
+          budgets,
+          'limit_cents',
+          labelKey: 'category',
+        ),
       ],
     );
   }

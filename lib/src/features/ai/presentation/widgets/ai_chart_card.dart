@@ -31,8 +31,11 @@ class AIChartCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.insert_chart_outlined_rounded,
-                    size: 19, color: colors.primary),
+                Icon(
+                  Icons.insert_chart_outlined_rounded,
+                  size: 19,
+                  color: colors.primary,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Column(
@@ -40,16 +43,14 @@ class AIChartCard extends StatelessWidget {
                     children: [
                       Text(
                         snapshot.title,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall
+                            ?.copyWith(fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 2),
                       Text(
                         snapshot.subtitle,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: colors.onSurfaceVariant,
-                        ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: colors.onSurfaceVariant),
                       ),
                     ],
                   ),
@@ -131,7 +132,9 @@ class _IncomeExpenseChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final income = snapshot.series.firstWhere((item) => item.role == 'income');
-    final expense = snapshot.series.firstWhere((item) => item.role == 'expense');
+    final expense = snapshot.series.firstWhere(
+      (item) => item.role == 'expense',
+    );
     final finance = _financeColors(context);
     final maximum = [
       ...income.points.map((point) => point.valueCents),
@@ -167,14 +170,13 @@ class _IncomeExpenseChart extends StatelessWidget {
           borderData: FlBorderData(show: false),
           barTouchData: BarTouchData(
             touchTooltipData: BarTouchTooltipData(
-              getTooltipItem: (group, groupIndex, rod, rodIndex) =>
-                  BarTooltipItem(
-                    '${rodIndex == 0 ? 'Entradas' : 'Saídas'}\n${_money(rod.toY)}',
-                    TextStyle(
-                      color: Theme.of(context).colorScheme.onInverseSurface,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+              getTooltipItem: (group, groupIndex, rod, rodIndex) => BarTooltipItem(
+                '${rodIndex == 0 ? 'Entradas' : 'Saídas'}\n${_money(rod.toY)}',
+                TextStyle(
+                  color: Theme.of(context).colorScheme.onInverseSurface,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
         ),
@@ -273,8 +275,7 @@ class _CategoryChart extends StatelessWidget {
                 color: palette[index % palette.length],
                 radius: 34,
                 showTitle: total > 0 && points[index].valueCents / total >= .08,
-                title:
-                    '${(points[index].valueCents * 100 / total).round()}%',
+                title: '${(points[index].valueCents * 100 / total).round()}%',
                 titleStyle: TextStyle(
                   color: Theme.of(context).colorScheme.surface,
                   fontWeight: FontWeight.w800,
@@ -435,15 +436,14 @@ class _InvoiceChart extends StatelessWidget {
           borderData: FlBorderData(show: false),
           barTouchData: BarTouchData(
             touchTooltipData: BarTouchTooltipData(
-              getTooltipItem: (group, groupIndex, rod, rodIndex) =>
-                  BarTooltipItem(
-                    'Pago: ${_moneyCents(paid.points[group.x].valueCents)}\n'
-                    'Em aberto: ${_moneyCents(group.x < remaining.points.length ? remaining.points[group.x].valueCents : 0)}',
-                    TextStyle(
-                      color: Theme.of(context).colorScheme.onInverseSurface,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+              getTooltipItem: (group, groupIndex, rod, rodIndex) => BarTooltipItem(
+                'Pago: ${_moneyCents(paid.points[group.x].valueCents)}\n'
+                'Em aberto: ${_moneyCents(group.x < remaining.points.length ? remaining.points[group.x].valueCents : 0)}',
+                TextStyle(
+                  color: Theme.of(context).colorScheme.onInverseSurface,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
         ),
@@ -453,7 +453,11 @@ class _InvoiceChart extends StatelessWidget {
 }
 
 class _LegendItem extends StatelessWidget {
-  const _LegendItem({required this.color, required this.label, required this.value});
+  const _LegendItem({
+    required this.color,
+    required this.label,
+    required this.value,
+  });
 
   final Color color;
   final String label;
@@ -636,7 +640,8 @@ String _compactMoney(double cents) {
   if (value.abs() >= 1000000) {
     return 'R\$ ${(value / 1000000).toStringAsFixed(1)} mi';
   }
-  if (value.abs() >= 1000) return 'R\$ ${(value / 1000).toStringAsFixed(1)} mil';
+  if (value.abs() >= 1000)
+    return 'R\$ ${(value / 1000).toStringAsFixed(1)} mil';
   return 'R\$ ${value.toStringAsFixed(0)}';
 }
 

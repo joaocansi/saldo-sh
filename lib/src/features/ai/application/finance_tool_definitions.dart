@@ -32,13 +32,11 @@ const financeToolDefinitions = [
           'type': 'integer',
           'minimum': 1,
           'maximum': 12,
-          'description':
-              'compare_months, cash_flow ou invoices: 1–12 meses desde month; gráficos usam 6 por padrão.',
+          'description': 'compare_months, cash_flow ou invoices: 1–12 meses desde month; gráficos usam 6 por padrão.',
         },
         'account_ref': {
           'type': 'string',
-          'description':
-              'Nome/ID; balance, transactions, category_spending, compare_months, cash_flow ou invoices.',
+          'description': 'Nome/ID; balance, transactions, category_spending, compare_months, cash_flow ou invoices.',
         },
         'search': {
           'type': 'string',
@@ -66,8 +64,7 @@ const financeToolDefinitions = [
         },
         'visualize': {
           'type': 'boolean',
-          'description':
-              'Solicita um gráfico calculado e renderizado localmente. Não gere Markdown, Mermaid, imagem ou código de gráfico.',
+          'description': 'Solicita um gráfico calculado e renderizado localmente. Não gere Markdown, Mermaid, imagem ou código de gráfico.',
         },
         'monthly_income_cents': {
           'type': 'integer',
